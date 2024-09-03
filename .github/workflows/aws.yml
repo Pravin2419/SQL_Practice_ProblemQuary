@@ -24,17 +24,20 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: CI/CD Pipeline
+name: Node.js CI/CD Pipeline
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -42,25 +45,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14'  # Specify the Node.js version you are using
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
 
       - name: Run tests
         run: npm test
+        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
 
       - name: Build
         run: npm run build
+        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to Production
+      - name: Deploy
         run: |
           echo "Deploying to production server"
-          # Your deployment commands here
+          # Add your deployment commands here
+        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
+
+  # Optional: Add more jobs for different stages like integration tests, performance tests, etc.
