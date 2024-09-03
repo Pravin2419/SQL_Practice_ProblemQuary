@@ -49,20 +49,18 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
+        working-directory: ./SQL_Practice_ProblemQuary  # Adjust this if your package.json is in a different directory
 
       - name: Run tests
         run: npm test
-        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
+        working-directory: ./SQL_Practice_ProblemQuary  # Adjust this if your package.json is in a different directory
 
       - name: Build
         run: npm run build
-        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
+        working-directory: ./SQL_Practice_ProblemQuary  # Adjust this if your package.json is in a different directory
 
       - name: Deploy
         run: |
           echo "Deploying to production server"
           # Add your deployment commands here
-        working-directory: ./SQL_Practice_ProblemQuary  # Set to the correct directory if needed
-
-  # Optional: Add more jobs for different stages like integration tests, performance tests, etc.
+        working-directory: ./SQL_Practice_ProblemQuary  # Adjust this if your package.json is in a different directory
